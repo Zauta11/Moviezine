@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="movie-container" >
+    <div class="top">
+
+        <div class="left">
+            <div class="name">{{movie?.name}}</div>
+            <div class="rating">
+                <app-star-rating
+          [rating]="movie?.rating"
+          [isReadOnly]="true">
+        </app-star-rating>
+        <span class="rating-value">{{ movie?.rating }}</span>
+            </div>
+            <div class="cover"> 
+                <img [src]="movie?.cover" alt=""/>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="title">Rate this movie</div>
+            <div class="rating-form">
+              <form class="form-group" (ngSubmit)="onSubmit()" [formGroup]="CommentForm">
+                <label >Name</label>
+                <input type="text" name="uname" class="form-control" placeholder="Username" formControlName="username" ngDefaultControl/>
+              <div>
+                <label>Rating</label>
+                <div class="rating">
+                   
+                  <app-star-rating 
+                    [rating]="0"
+                    [isReadOnly]="false">
+                 </app-star-rating>
+                
+                </div>
+              </div>
+              <div>
+                <label>Review</label>
+                <textarea name="review" rows="3" class="form-control" placeholder="Leave your comment" formControlName="review" ngDefaultControl></textarea>
+              </div>
+            </form>
+              <div class="btn-container">
+                <button class="btn btn-danger" [disabled]="CommentForm.invalid" (click)="onSubmit()" >Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 class="title">Reviews</h4>
+        <div class="bottom">
+          <div class="reviews" >
+            <div class="comment" *ngIf="onSubmit">
+                <div class="reviews-username">{{mytexts?.username}}</div>
+                <div class="reviews-text">{{mytexts?.review}}</div>
+                <div class="reviews-data">{{date | date: "dd-MMM-YYYY"}}</div>
+            </div>
+          </div>
+        </div>
+      </div>

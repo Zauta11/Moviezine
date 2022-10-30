@@ -43,6 +43,13 @@
         color: black;
         .form-group {
             margin-top: 10px;
+            position: relative;
+            .error {
+              position: absolute;
+              top: 65px;
+              right: 20px;
+              color: red;
+            }
           }
         label {
           font-weight: bold;
@@ -52,12 +59,7 @@
           .btn {
             margin-top: 10px;
           }
-          .error {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: red;
-          }
+          
         }
       }
 }
